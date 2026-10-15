@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local working copies (not part of the site)
+Claude outputs/
+.DS_Store
