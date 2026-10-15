@@ -1637,3 +1637,120 @@ ul { list-style: none; }
 /* keep descenders (the "y" and "g") visible with gradient text */
 .hero-title .line { padding-bottom: .18em; margin-bottom: -.12em; }
 .hero-title .line > span { padding-bottom: .06em; }
+
+/* ==========================================================================
+   Desktop: full-width layout (phones and tablets unchanged)
+   ========================================================================== */
+@media (min-width: 901px) {
+  :root { --gutter: clamp(32px, 4.5vw, 96px); --header-h: 96px; }
+  .container { max-width: 1800px; }
+
+  /* One-row header across the full width: logo | menu | icons */
+  .site-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding-inline: var(--gutter);
+  }
+  .header-inner { display: contents; }
+  #menuBtn { display: none; }
+  .brand {
+    grid-column: 1;
+    justify-self: start;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 14px;
+    align-items: center;
+    justify-items: start;
+    padding-block: 18px;
+  }
+  .brand-mark { grid-row: span 2; width: 58px; }
+  .brand-name { font-size: 1.85rem; margin: 0; align-self: end; }
+  .brand-tag { margin-top: 6px; align-self: start; font-size: .62rem; }
+  .main-nav { grid-column: 2; grid-row: 1; padding: 0; }
+  .main-nav ul { gap: clamp(28px, 2.8vw, 52px); }
+  .main-nav a { padding: 34px 2px; font-size: 1.2rem; }
+  .nav-indicator { bottom: 24px; }
+  .header-actions { grid-column: 3; grid-row: 1; justify-self: end; gap: 10px; }
+
+  .site-header.is-compact .brand { padding-block: 8px; }
+  .site-header.is-compact .brand-mark { width: 40px; }
+  .site-header.is-compact .brand-name { font-size: 1.45rem; }
+  .site-header.is-compact .main-nav a { padding: 22px 2px; }
+  .site-header.is-compact .nav-indicator { bottom: 14px; }
+
+  /* Full-screen hero */
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100svh - var(--header-h) - 34px);
+    padding-block: clamp(40px, 5vh, 72px);
+  }
+  .hero-copy { padding-left: clamp(0px, 2vw, 40px); }
+  .hero-title { font-size: clamp(4.6rem, 7.4vw, 9.5rem); }
+  .hero-text { font-size: clamp(1.3rem, 1.4vw, 1.6rem); max-width: 28em; }
+  .eyebrow { font-size: 1rem; }
+  .btn { min-height: 58px; padding-inline: 36px; font-size: .86rem; }
+  .hero-visual {
+    width: auto;
+    height: min(76vh, 880px);
+    aspect-ratio: 4 / 5;
+    justify-self: center;
+  }
+  .bubble.b1 { width: 92px; height: 92px; right: -40px; }
+  .bubble.b2 { width: 56px; height: 56px; left: -30px; }
+  .float-card { left: -70px; padding: 20px 28px 20px 52px; }
+  .float-card-label { font-size: 1.35rem; }
+
+  /* Wider sections */
+  .highlight-list { padding-block: 64px; }
+  .highlight-list svg { width: 54px; height: 54px; }
+  .highlight-list h3 { font-size: 1.08rem; }
+  .highlight-list p { font-size: 1.15rem; }
+
+  .section-title { font-size: clamp(2.8rem, 4vw, 4.6rem); }
+  .col-grid { gap: clamp(20px, 2.2vw, 40px); }
+  .col-name { font-size: 1.25rem; }
+
+  .story-inner { grid-template-columns: 1fr 1.1fr; }
+  .story-media { max-width: 600px; }
+  .story-copy p:not(.eyebrow) { font-size: 1.3rem; }
+
+  .gal-grid { grid-auto-rows: clamp(200px, 15vw, 340px); gap: clamp(14px, 1.4vw, 24px); }
+
+  .notify-title { font-size: clamp(3.2rem, 5vw, 5.6rem); }
+  .notify-text { font-size: 1.35rem; }
+  .medallion { --size: 260px; }
+  .signup { max-width: 600px; }
+
+  .faq-inner { grid-template-columns: .9fr 1.1fr; }
+  .faq button { padding-block: 28px; }
+
+  .contact-card { max-width: calc(1800px - 2 * var(--gutter)); }
+
+  /* Footer spreads across the width */
+  .footer-inner {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: stretch;
+    text-align: left;
+  }
+  .footer-brand { grid-template-columns: auto auto; align-items: center; column-gap: 12px; justify-self: start; }
+  .site-footer nav { justify-content: center; }
+  .copyright { justify-self: end; }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .main-nav ul { gap: 22px; }
+  .main-nav a { font-size: 1.08rem; }
+  .brand-tag { display: none; }
+  .hero-visual { height: min(64vh, 640px); }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .brand-mark { width: 44px; }
+  .brand-name { font-size: 1.4rem; letter-spacing: .22em; margin-right: -.22em; }
+  .brand-tag { display: none; }
+  .main-nav ul { gap: 20px; }
+  .main-nav a { font-size: 1.04rem; }
+  .header-actions { gap: 2px; }
+}
