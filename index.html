@@ -35,7 +35,7 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { -webkit-font-smoothing: antialiased; }
+    html { -webkit-font-smoothing: antialiased; overflow-x: clip; }
 
     body {
       min-height: 100vh;
@@ -567,6 +567,15 @@
       .signup input { width: 100%; text-align: center; }
       .signup button { width: 100%; }
       .divider i { width: 56px; }
+    }
+
+    @media (max-width: 380px) {
+      .wordmark { letter-spacing: 0.2em; margin-right: -0.2em; font-size: 3rem; }
+      .tagline { letter-spacing: 0.2em; margin-right: -0.2em; font-size: 0.78rem; }
+      .float-charm.f1 { top: 18%; left: 2%; width: 32px; }
+      .float-charm.f3 { top: 20%; right: 2%; width: 30px; }
+      .topbar .brand { letter-spacing: 0.22em; font-size: 1rem; }
+      .topbar .ig { padding: 8px 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
