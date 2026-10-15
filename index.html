@@ -36,6 +36,12 @@
         <stop offset="50%" stop-color="#B9825E"/>
         <stop offset="100%" stop-color="#E7C391"/>
       </linearGradient>
+      <linearGradient id="iri" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#E4578C"/>
+        <stop offset="35%" stop-color="#F08A5D"/>
+        <stop offset="65%" stop-color="#D9A03F"/>
+        <stop offset="100%" stop-color="#8C6CF0"/>
+      </linearGradient>
       <symbol id="spark" viewBox="0 0 20 20">
         <path d="M10 0 C11 7 13 9 20 10 C13 11 11 13 10 20 C9 13 7 11 0 10 C7 9 9 7 10 0Z"/>
       </symbol>
@@ -57,6 +63,7 @@
   </div>
 
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <canvas class="page-sparkles" id="pageSparkles" aria-hidden="true"></canvas>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -112,6 +119,9 @@
 
     <!-- Hero -->
     <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-aurora" aria-hidden="true">
+        <span class="aura h1"></span><span class="aura h2"></span><span class="aura h3"></span><span class="aura h4"></span>
+      </div>
       <div class="hero-inner container">
         <div class="hero-copy">
           <p class="eyebrow">Fine-jewellery inspired</p>
@@ -138,6 +148,9 @@
             <svg class="glint small" style="--x:72%;--y:22%;--d:1.7s" aria-hidden="true"><use href="#spark"/></svg>
           </div>
           <div class="arch-outline" aria-hidden="true"></div>
+          <span class="bubble b1" aria-hidden="true"></span>
+          <span class="bubble b2" aria-hidden="true"></span>
+          <span class="bubble b3" aria-hidden="true"></span>
           <a class="float-card" href="#notify">
             <span class="float-card-label">The Clover Edit</span>
             <span class="float-card-sub">Launching soon</span>
@@ -145,6 +158,11 @@
         </div>
       </div>
     </section>
+
+    <!-- Moving ribbon -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track"><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg></div>
+    </div>
 
     <!-- Highlights -->
     <section class="highlights" aria-label="Why Seltra">
@@ -464,5 +482,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/effects.js" defer></script>
 </body>
 </html>

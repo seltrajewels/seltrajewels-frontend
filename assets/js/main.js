@@ -423,8 +423,8 @@
   const cards = Array.from(grid.querySelectorAll('.col-card'));
   const mobile = window.matchMedia('(max-width: 640px)');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DELAY = 3200;      // time on each card
-  const RESUME = 6000;     // wait after the visitor touches it
+  const DELAY = 1300;      // time on each card
+  const RESUME = 4000;     // wait after the visitor touches it
 
   // dots under the carousel
   const dots = document.createElement('div');
