@@ -1320,6 +1320,20 @@ ul { list-style: none; }
   .lb-figure img { max-height: 70vh; }
 }
 
+.col-dots { display: none; }
+@media (max-width: 640px) {
+  .col-dots { display: flex; justify-content: center; gap: 8px; margin-top: 2px; }
+  .col-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border-radius: 999px;
+    background: rgba(142, 87, 67, .28);
+    transition: width .5s var(--ease), background-color .4s;
+  }
+  .col-dots button[aria-selected="true"] { width: 26px; background: linear-gradient(90deg, var(--rose), var(--champagne)); }
+}
+
 @media (max-width: 380px) {
   .brand-name { font-size: 1.25rem; letter-spacing: .22em; margin-right: -.22em; }
   .hero-title { font-size: 3rem; }

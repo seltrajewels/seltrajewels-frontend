@@ -410,3 +410,82 @@
     burstAt(form, 40);
   });
 })();
+
+/* ------------------------------------------------------------------
+   Collections: auto-rolling carousel on phones
+   Advances every few seconds, pauses while the visitor touches it,
+   and only runs while the section is on screen.
+------------------------------------------------------------------ */
+(function () {
+  'use strict';
+  const grid = document.getElementById('colGrid');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.col-card'));
+  const mobile = window.matchMedia('(max-width: 640px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DELAY = 3200;      // time on each card
+  const RESUME = 6000;     // wait after the visitor touches it
+
+  // dots under the carousel
+  const dots = document.createElement('div');
+  dots.className = 'col-dots';
+  dots.setAttribute('role', 'tablist');
+  dots.setAttribute('aria-label', 'Choose a collection');
+  cards.forEach((card, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', card.dataset.collection || 'Collection ' + (i + 1));
+    b.addEventListener('click', () => { goTo(i); pause(); });
+    dots.appendChild(b);
+  });
+  grid.after(dots);
+
+  let index = 0, timer = null, resumeTimer = null, visible = false;
+
+  function current() {
+    const center = grid.scrollLeft + grid.clientWidth / 2;
+    let best = 0, dist = Infinity;
+    cards.forEach((c, i) => {
+      const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+      if (d < dist) { dist = d; best = i; }
+    });
+    return best;
+  }
+  function paintDots(i) {
+    Array.from(dots.children).forEach((d, j) => d.setAttribute('aria-selected', String(i === j)));
+  }
+  function goTo(i) {
+    index = (i + cards.length) % cards.length;
+    const c = cards[index];
+    grid.scrollTo({ left: c.offsetLeft - (grid.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    paintDots(index);
+  }
+  function play() {
+    stop();
+    if (!mobile.matches || reduceMotion || !visible) return;
+    timer = setInterval(() => goTo(current() + 1), DELAY);
+  }
+  function stop() { clearInterval(timer); timer = null; }
+  function pause() {
+    stop();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(play, RESUME);
+  }
+
+  grid.addEventListener('touchstart', pause, { passive: true });
+  grid.addEventListener('pointerdown', pause);
+  grid.addEventListener('scroll', () => {
+    clearTimeout(grid._t);
+    grid._t = setTimeout(() => paintDots(current()), 80);
+  }, { passive: true });
+
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    visible ? play() : stop();
+  }, { threshold: 0.4 }).observe(grid);
+
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+  mobile.addEventListener('change', play);
+  paintDots(0);
+})();
