@@ -23,8 +23,9 @@ Seltra offers fine-jewellery inspired pieces designed to be worn every day:
 
 | Phase | Status |
 |-------|--------|
-| Coming Soon page | 🟡 In progress |
-| Full website (5–6 pages) | ⚪ Planned |
+| Pre-launch website (home, collections preview, story, gallery, FAQs, contact, email signup) | 🟢 Live |
+| Email signup connected to a mailing service | 🟡 To do |
+| Full shop pages | ⚪ Planned |
 | Product catalogue & inventory | ⚪ Planned |
 | Cart & payment gateway | ⚪ Planned |
 
@@ -56,7 +57,7 @@ Colour values are approximations from the brand mockups; update them once final 
 
 ## Tech Stack
 
-- HTML5 & CSS3 (coming soon phase)
+- HTML5, CSS3 and vanilla JavaScript (no build step)
 - Hosted on [Vercel](https://vercel.com) with automatic deploys from `main`
 - Framework and payment provider to be decided for the full store
 
@@ -66,10 +67,11 @@ Colour values are approximations from the brand mockups; update them once final 
 
 ```
 seltrajewels-frontend/
-├── index.html        # Coming soon page
+├── index.html            # Pre-launch site (all sections)
 ├── assets/
-│   ├── images/       # Logo, product and background images
-│   └── fonts/        # Custom fonts (if any)
+│   ├── css/styles.css    # All styles
+│   ├── js/main.js        # Menu, search, bag, gallery, FAQs, signup, effects
+│   └── images/           # Logo, favicons, product and background images
 └── README.md
 ```
 
