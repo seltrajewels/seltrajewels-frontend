@@ -155,11 +155,11 @@
   /* Search */
   const searchInput = $('#searchInput');
   const searchMsg = $('#searchMsg');
-  const categories = ['Necklaces', 'Earrings', 'Rings', 'Bracelets'];
+  const categories = ['Necklaces', 'Earrings', 'Rings', 'Bracelets', 'Ringlets', 'Anklets', 'Mangalsutra Bracelets', 'Mangalsutra Chains', 'Waist Chains', 'Sets', 'Cuff Bracelets'];
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
     if (!q) { searchMsg.textContent = ''; return; }
-    const match = categories.find(c => c.toLowerCase().startsWith(q) || c.toLowerCase().includes(q));
+    const match = categories.find(c => c.toLowerCase().startsWith(q)) || categories.find(c => c.toLowerCase().includes(q)) || (/(mangal|black bead)/.test(q) ? 'Mangalsutra Chains' : /(cuff|bangle|kada)/.test(q) ? 'Cuff Bracelets' : /(waist|kamar|belly)/.test(q) ? 'Waist Chains' : /(hand chain|haath|ringlet)/.test(q) ? 'Ringlets' : /(set|combo)/.test(q) ? 'Sets' : /(ear|stud|climber)/.test(q) ? 'Earrings' : /(ankle|payal)/.test(q) ? 'Anklets' : undefined);
     searchMsg.innerHTML = match
       ? `${match} arrive at launch. <a href="#notify">Join the list</a> to see them first.`
       : `The full shop opens soon. <a href="#notify">Get notified</a> when it does.`;
@@ -223,7 +223,7 @@
   ------------------------------------------------------------------ */
   if (finePointer && !reduceMotion) {
     const heroVisual = $('#heroVisual');
-    const heroImg = $('.arch img');
+    const heroImg = $('#heroSlides');
     heroVisual.addEventListener('pointermove', e => {
       const r = heroVisual.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - .5;
@@ -488,4 +488,83 @@
   document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
   mobile.addEventListener('change', play);
   paintDots(0);
+})();
+
+
+/* ------------------------------------------------------------------
+   Always open at the top of the page, and keep #links out of the URL
+   (so a refresh or reopen never jumps to an old position)
+------------------------------------------------------------------ */
+(function () {
+  'use strict';
+  const toTop = () => {
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = prev;
+  };
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  toTop();
+  window.addEventListener('load', toTop);
+  window.addEventListener('pageshow', e => { if (e.persisted) toTop(); });
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey) return;
+    const id = a.getAttribute('href').slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+})();
+
+/* ------------------------------------------------------------------
+   Hero slideshow: crossfades through featured pieces
+------------------------------------------------------------------ */
+(function () {
+  'use strict';
+  const slides = Array.from(document.querySelectorAll('#heroSlides .arch-slide'));
+  const dotsEl = document.getElementById('slideDots');
+  const nameEl = document.getElementById('floatName');
+  const catEl = document.getElementById('floatCat');
+  const card = document.getElementById('floatCard');
+  if (slides.length < 2 || !dotsEl) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DURATION = 4500;
+  let i = 0, timer = null;
+
+  slides.forEach((s, n) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Show ' + s.dataset.name);
+    b.addEventListener('click', () => { show(n); restart(); });
+    dotsEl.appendChild(b);
+  });
+
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    Array.from(dotsEl.children).forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+    if (card) {
+      card.classList.remove('is-swap');
+      void card.offsetWidth;
+      card.classList.add('is-swap');
+    }
+    if (nameEl) nameEl.textContent = slides[i].dataset.name;
+    if (catEl) catEl.textContent = slides[i].dataset.cat + ' · Launching soon';
+  }
+  function restart() {
+    clearInterval(timer);
+    if (!reduce) timer = setInterval(() => show(i + 1), DURATION);
+  }
+  // load the remaining slides once the page has settled
+  window.addEventListener('load', () => slides.forEach(s => { s.loading = 'eager'; }));
+  document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(timer) : restart());
+  show(0);
+  // begin rotating once the opening reveal has finished
+  const introRunning = !document.documentElement.classList.contains('intro-done');
+  setTimeout(restart, introRunning ? 3200 : 0);
 })();

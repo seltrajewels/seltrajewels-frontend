@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Seltra — Everyday Elegance">
   <meta property="og:description" content="Thoughtfully curated demi-fine jewellery. Launching soon.">
-  <meta property="og:image" content="assets/images/hero-necklace-earrings.jpg">
+  <meta property="og:image" content="assets/images/p-ear-climber.jpg">
 
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
@@ -18,10 +18,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/images/hero-necklace-earrings.jpg">
+  <link rel="preload" as="image" href="assets/images/p-ear-climber.jpg">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     document.documentElement.classList.add('js');
     try { if (sessionStorage.getItem('seltra-intro-seen')) document.documentElement.classList.add('intro-seen'); } catch (e) {}
   </script>
@@ -139,21 +141,23 @@
 
         <div class="hero-visual" id="heroVisual">
           <div class="arch">
-            <img src="assets/images/hero-necklace-earrings.jpg" alt="Gold clover necklace and matching stud earrings with mother-of-pearl petals, on blush marble with baby's breath flowers" width="938" height="1092">
+            <div class="arch-slides" id="heroSlides">
+              <img class="arch-slide is-active" src="assets/images/p-ear-climber.jpg" alt="Gold leaf ear climber set with crystals" style="object-position:48% 46%" data-name="The Leaf Climber" data-cat="Earrings">
+              <img class="arch-slide" src="assets/images/p-necklaces.jpg" alt="Layered gold necklaces with a solitaire and a mother-of-pearl clover pendant" style="object-position:52% 58%" data-name="The Clover Layer" data-cat="Necklaces" loading="lazy">
+              <img class="arch-slide" src="assets/images/p-cuff-bracelets.jpg" alt="Open gold cuff with crystal leaves on the wrist" style="object-position:55% 55%" data-name="The Vine Cuff" data-cat="Cuff Bracelets" loading="lazy">
+              <img class="arch-slide" src="assets/images/p-ringlets.jpg" alt="Clover hand chain linking a bracelet to a V-shaped ring" style="object-position:50% 42%" data-name="The Clover Ringlet" data-cat="Ringlets" loading="lazy">
+              <img class="arch-slide" src="assets/images/p-anklets.jpg" alt="Clover anklets and ring on pink satin with baby's breath" style="object-position:55% 55%" data-name="The Clover Anklets" data-cat="Anklets" loading="lazy">
+            </div>
             <span class="arch-sheen" aria-hidden="true"></span>
-            <!-- light catching the stones -->
-            <svg class="glint" style="--x:19%;--y:71%;--d:0s" aria-hidden="true"><use href="#spark"/></svg>
-            <svg class="glint" style="--x:32%;--y:74%;--d:1.1s" aria-hidden="true"><use href="#spark"/></svg>
-            <svg class="glint" style="--x:57%;--y:68%;--d:.5s" aria-hidden="true"><use href="#spark"/></svg>
-            <svg class="glint small" style="--x:72%;--y:22%;--d:1.7s" aria-hidden="true"><use href="#spark"/></svg>
           </div>
+          <div class="slide-dots" id="slideDots" aria-label="Featured pieces"></div>
           <div class="arch-outline" aria-hidden="true"></div>
           <span class="bubble b1" aria-hidden="true"></span>
           <span class="bubble b2" aria-hidden="true"></span>
           <span class="bubble b3" aria-hidden="true"></span>
-          <a class="float-card" href="#notify">
-            <span class="float-card-label">The Clover Edit</span>
-            <span class="float-card-sub">Launching soon</span>
+          <a class="float-card" href="#collections" id="floatCard">
+            <span class="float-card-label" id="floatName">The Leaf Climber</span>
+            <span class="float-card-sub" id="floatCat">Earrings · Launching soon</span>
           </a>
         </div>
       </div>
@@ -161,7 +165,7 @@
 
     <!-- Moving ribbon -->
     <div class="marquee" aria-hidden="true">
-      <div class="marquee-track"><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg></div>
+      <div class="marquee-track"><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>11 Collections · Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg><span>18K Gold Plated</span><svg><use href="#spark"/></svg><span>Anti-Tarnish</span><svg><use href="#spark"/></svg><span>Skin Friendly</span><svg><use href="#spark"/></svg><span>Everyday Versatility</span><svg><use href="#spark"/></svg><span>11 Collections · Launching Soon</span><svg><use href="#spark"/></svg><span>Elegance in Every Element</span><svg><use href="#spark"/></svg></div>
     </div>
 
     <!-- Highlights -->
@@ -209,23 +213,58 @@
 
         <div class="col-grid" id="colGrid">
           <a class="col-card" href="#notify" data-collection="Necklaces">
-            <span class="col-media"><img src="assets/images/col-necklaces.jpg" alt="Gold clover pendant necklace set with crystals" loading="lazy" width="394" height="288"></span>
+            <span class="col-media"><img src="assets/images/p-necklaces.jpg" alt="Layered gold necklaces with a solitaire and a clover pendant" loading="lazy" style="object-position:52% 60%"></span>
             <span class="col-name">Necklaces</span>
             <span class="col-meta">Arriving at launch</span>
           </a>
           <a class="col-card" href="#notify" data-collection="Earrings">
-            <span class="col-media"><img src="assets/images/col-earrings.jpg" alt="Mother-of-pearl clover stud earrings in gold" loading="lazy" width="398" height="288"></span>
+            <span class="col-media"><img src="assets/images/p-earrings.jpg" alt="Mother-of-pearl clover stud and solitaire stud on the ear" loading="lazy" style="object-position:40% 48%"></span>
             <span class="col-name">Earrings</span>
             <span class="col-meta">Arriving at launch</span>
           </a>
           <a class="col-card" href="#notify" data-collection="Rings">
-            <span class="col-media"><img src="assets/images/col-rings.jpg" alt="Two stacked gold rings, one set with a row of crystals" loading="lazy" width="398" height="288"></span>
+            <span class="col-media"><img src="assets/images/p-rings.jpg" alt="Mother-of-pearl clover ring on a crystal pavé band" loading="lazy" style="object-position:50% 47%"></span>
             <span class="col-name">Rings</span>
             <span class="col-meta">Arriving at launch</span>
           </a>
           <a class="col-card" href="#notify" data-collection="Bracelets">
-            <span class="col-media"><img src="assets/images/col-bracelets.jpg" alt="Gold chain bracelet with mother-of-pearl clover charms" loading="lazy" width="394" height="288"></span>
+            <span class="col-media"><img src="assets/images/p-bracelets.jpg" alt="Clover station bracelet and clover ring on the hand" loading="lazy" style="object-position:42% 60%"></span>
             <span class="col-name">Bracelets</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Ringlets">
+            <span class="col-media"><img src="assets/images/p-ringlets.jpg" alt="Clover hand chain linking a bracelet to a ring" loading="lazy" style="object-position:50% 45%"></span>
+            <span class="col-name">Ringlets</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Anklets">
+            <span class="col-media"><img src="assets/images/p-anklets.jpg" alt="Clover anklets on crossed feet over pink satin" loading="lazy" style="object-position:52% 58%"></span>
+            <span class="col-name">Anklets</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Mangalsutra Bracelets">
+            <span class="col-media"><img src="assets/images/p-mangalsutra-bracelets.jpg" alt="Black-bead mangalsutra bracelet with a clover charm" loading="lazy" style="object-position:50% 57%"></span>
+            <span class="col-name">Mangalsutra Bracelets</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Mangalsutra Chains">
+            <span class="col-media"><img src="assets/images/p-mangalsutra-chains.jpg" alt="Black-bead mangalsutra chain with a clover pendant" loading="lazy" style="object-position:50% 60%"></span>
+            <span class="col-name">Mangalsutra Chains</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Waist Chains">
+            <span class="col-media"><img src="assets/images/p-waist-chain.jpg" alt="Delicate clover waist chain worn with a pink saree" loading="lazy" style="object-position:55% 34%"></span>
+            <span class="col-name">Waist Chains</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card wide" href="#notify" data-collection="Sets">
+            <span class="col-media"><img src="assets/images/p-sets.jpg" alt="Clover necklace and matching earrings on a blush display" loading="lazy" style="object-position:50% 50%"></span>
+            <span class="col-name">Sets</span>
+            <span class="col-meta">Arriving at launch</span>
+          </a>
+          <a class="col-card" href="#notify" data-collection="Cuff Bracelets">
+            <span class="col-media"><img src="assets/images/p-cuff-bracelets.jpg" alt="Open gold cuff with crystal leaves" loading="lazy" style="object-position:55% 55%"></span>
+            <span class="col-name">Cuff Bracelets</span>
             <span class="col-meta">Arriving at launch</span>
           </a>
         </div>
@@ -236,7 +275,7 @@
     <section class="section story" id="story" aria-labelledby="storyTitle">
       <div class="container story-inner">
         <figure class="story-media">
-          <img src="assets/images/flowers-left.jpg" alt="Baby's breath flowers resting on blush satin" loading="lazy" width="500" height="584">
+          <img src="assets/images/p-bracelets.jpg" alt="Hand wearing a clover bracelet and clover ring beside baby's breath" loading="lazy" style="object-position:45% 55%">
         </figure>
         <div class="story-copy">
           <p class="eyebrow">Our story</p>
@@ -260,23 +299,23 @@
         </header>
 
         <div class="gal-grid">
-          <button class="gal-item tall" data-index="0" aria-label="View larger: clover necklace and earrings">
-            <img src="assets/images/hero-necklace-earrings.jpg" alt="Clover necklace and earrings on blush marble" loading="lazy">
+          <button class="gal-item tall" data-index="0" aria-label="View larger: Leaf ear climber with crystals">
+            <img src="assets/images/p-ear-climber.jpg" alt="Leaf ear climber with crystals" loading="lazy" style="object-position:48% 46%">
           </button>
-          <button class="gal-item" data-index="1" aria-label="View larger: clover stud earrings">
-            <img src="assets/images/col-earrings.jpg" alt="Clover stud earrings" loading="lazy">
+          <button class="gal-item" data-index="1" aria-label="View larger: Solitaire stud with a leaf ear cuff">
+            <img src="assets/images/p-ear-cuff-stud.jpg" alt="Solitaire stud with a leaf ear cuff" loading="lazy" style="object-position:55% 45%">
           </button>
-          <button class="gal-item" data-index="2" aria-label="View larger: stacked gold rings">
-            <img src="assets/images/col-rings.jpg" alt="Stacked gold rings" loading="lazy">
+          <button class="gal-item" data-index="2" aria-label="View larger: Clover necklace and earring set on display">
+            <img src="assets/images/p-sets.jpg" alt="Clover necklace and earring set on display" loading="lazy" style="object-position:50% 50%">
           </button>
-          <button class="gal-item tall" data-index="3" aria-label="View larger: baby's breath on satin">
-            <img src="assets/images/flowers-left.jpg" alt="Baby's breath on blush satin" loading="lazy">
+          <button class="gal-item tall" data-index="3" aria-label="View larger: Clover waist chain with a pink saree">
+            <img src="assets/images/p-waist-chain.jpg" alt="Clover waist chain with a pink saree" loading="lazy" style="object-position:55% 34%">
           </button>
-          <button class="gal-item" data-index="4" aria-label="View larger: crystal clover pendant">
-            <img src="assets/images/col-necklaces.jpg" alt="Crystal clover pendant" loading="lazy">
+          <button class="gal-item" data-index="4" aria-label="View larger: Black-bead mangalsutra chain with clover pendant">
+            <img src="assets/images/p-mangalsutra-chains.jpg" alt="Black-bead mangalsutra chain with clover pendant" loading="lazy" style="object-position:50% 62%">
           </button>
-          <button class="gal-item" data-index="5" aria-label="View larger: clover charm bracelet">
-            <img src="assets/images/col-bracelets.jpg" alt="Clover charm bracelet" loading="lazy">
+          <button class="gal-item" data-index="5" aria-label="View larger: Clover ring on a pavé band">
+            <img src="assets/images/p-rings.jpg" alt="Clover ring on a pavé band" loading="lazy" style="object-position:50% 47%">
           </button>
         </div>
       </div>
@@ -448,7 +487,7 @@
       <form class="search-form" role="search" onsubmit="return false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
         <label class="visually-hidden" for="searchInput">Search Seltra</label>
-        <input id="searchInput" type="search" placeholder="Search necklaces, earrings, rings…" autocomplete="off">
+        <input id="searchInput" type="search" placeholder="Search necklaces, anklets, sets…" autocomplete="off">
         <button type="button" class="icon-btn" data-close aria-label="Close search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
@@ -460,6 +499,13 @@
           <a href="#collections" data-q="Earrings">Earrings</a>
           <a href="#collections" data-q="Rings">Rings</a>
           <a href="#collections" data-q="Bracelets">Bracelets</a>
+          <a href="#collections" data-q="Ringlets">Ringlets</a>
+          <a href="#collections" data-q="Anklets">Anklets</a>
+          <a href="#collections" data-q="Mangalsutra Bracelets">Mangalsutra Bracelets</a>
+          <a href="#collections" data-q="Mangalsutra Chains">Mangalsutra Chains</a>
+          <a href="#collections" data-q="Waist Chains">Waist Chains</a>
+          <a href="#collections" data-q="Sets">Sets</a>
+          <a href="#collections" data-q="Cuff Bracelets">Cuff Bracelets</a>
         </div>
         <p class="search-msg" id="searchMsg" role="status"></p>
       </div>
